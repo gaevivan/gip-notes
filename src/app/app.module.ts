@@ -9,11 +9,22 @@ import { CommonModule } from "@angular/common";
 import { DbService } from "./services/db.service";
 import { AngularFireModule } from "@angular/fire";
 import { FIREBASE_CONFIG } from "./firebase-config";
-import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { MomentDatePipe } from "./pipes/date.pipe";
+import { LoaderComponent } from "./components/loader/loader.component";
+import { LoginComponent } from "./components/login-page/login.component";
+import { LoaderService } from "./services/loader.service";
+import { AuthService } from "./services/auth.service";
 
 @NgModule({
-    declarations: [AppComponent, MainComponent, NotFoundComponent, MomentDatePipe],
+    declarations: [
+        AppComponent,
+        MainComponent,
+        NotFoundComponent,
+        MomentDatePipe,
+        LoaderComponent,
+        LoginComponent
+    ],
     imports: [
         BrowserModule,
         CommonModule,
@@ -22,7 +33,7 @@ import { MomentDatePipe } from "./pipes/date.pipe";
         AngularFireModule.initializeApp(FIREBASE_CONFIG),
         AngularFirestoreModule
     ],
-    providers: [DbService],
+    providers: [DbService, LoaderService, AuthService],
     bootstrap: [AppComponent]
 })
 export class AppModule {}

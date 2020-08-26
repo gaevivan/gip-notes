@@ -4,12 +4,13 @@ export namespace Entities {
         login: string;
         password: string;
     }
-    
+
     export interface Note {
         title: string;
         text: string;
         u_date: string;
         c_date: string;
+        color: string;
     }
 }
 

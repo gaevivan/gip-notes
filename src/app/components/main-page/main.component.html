@@ -1,14 +1,14 @@
-<div class="vh-100 vw-100 bg-color d-flex">
-    <div class="w-100 h-100 d-inline-flex flex-wrap flex-gap p-3 mx-auto justify-content-start"
+<!-- <div class="vh-100 vw-100 bg-color d-flex z-index-1 p-3 overflow-auto">
+    <div class="w-100 h-100 d-inline-flex flex-wrap flex-gap mx-auto justify-content-start"
         [style.maxWidth.px]="1200">
         <ng-container *ngFor="let item of items">
-            <div class="rounded d-flex flex-column justify-content-between {{item.color}}-color" [style.height.px]="250"
+            <div (focusin)="setActive(item)" (focusout)="setActive(null)" class="rounded d-flex flex-column justify-content-between {{item.color}}-color" [ngClass]="{'w-100': isFullWidth}" [style.height.px]="250"
                 [style.width.px]="250">
                 <ng-container *ngIf="item.title?.length">
                     <div class="h4 m-0 p-3" [style.height.px]="50">{{item.title}}</div>
                 </ng-container>
-                <input type="text" class="flex-grow-1 border-0 align-top bg-transparent" [(ngModel)]="item.text"
-                    (change)="update(item)">
+                <textarea type="text" class="flex-grow-1 border-0 align-top bg-transparent p-2" [(ngModel)]="item.text"
+                    (change)="update(item)"></textarea>
                 <div class="text-secondary d-flex justify-content-end align-content-end cursor-default p-2">
                     {{item.u_date | momentDate}}</div>
             </div>
@@ -16,7 +16,8 @@
         <div class="border rounded d-flex flex-column justify-content-between bg-transparent" [style.height.px]="250"
             [style.width.px]="250">
             <input class="h4 m-0 p-3 w-100 bg-transparent border-0" [style.height.px]="50" [(ngModel)]="newItem.title" placeholder="Заголовок...">
-            <input type="text" class="flex-grow-1 border-0 align-top bg-transparent" [(ngModel)]="newItem.text" placeholder="Новая заметка...">
+            <textarea class="flex-grow-1 border-0 align-top bg-transparent p-2" [(ngModel)]="newItem.text" placeholder="Новая заметка..." (change)="create()"></textarea>
         </div>
     </div>
-</div>
+</div> -->
+<button (click)="authService.signOut()">Logout</button>

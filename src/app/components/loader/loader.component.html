@@ -1,0 +1,12 @@
+<ng-container *ngIf="loaderService.active">
+    <div
+        class="position-absolute vw-100 vh-100 bg-shadow z-index-3 d-flex flex-column justify-content-center"
+        [style.left]="0"
+        [style.top]="0"
+    >
+        <div class="mx-auto">
+            <div class="loader color-light">1</div>
+            <span class="color-light">Загрузка...</span>
+        </div>
+    </div>
+</ng-container>
