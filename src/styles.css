@@ -1,1 +1,38 @@
 /* You can add global styles to this file, and also import other style files */
+.vh-100 {
+    height: 100vh !important;
+}
+.vw-100 {
+    width: 100vw !important;
+}
+.flex-gap {
+    gap: 1rem;
+}
+
+.cursor-default {
+    cursor: default;
+}
+
+.bg-color {
+    background-color: #F2F2F2;
+}
+.bg-transparent {
+    background-color: transparent;
+    outline: none;
+}
+
+.red-color {
+    background-color: #eba6a6;
+}
+.violet-color {
+    background-color: #dbc5f0;
+}
+.yellow-color {
+    background-color: #f1ebd7;
+}
+.blue-color {
+    background-color: #cbe1ff;
+}
+.green-color {
+    background-color: #9bd3b9;
+}

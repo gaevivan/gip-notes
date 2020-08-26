@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "jsondb-d8a6a": {
+      "hosting": {
+        "gip-notes": [
+          "jsondb-d8a6a"
+        ]
+      }
+    }
+  }
+}
