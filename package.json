@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "deploy": "ng deploy",
     "test": "ng test",
     "lint": "npx eslint ./src/app --ext .ts > eslint_error.log",
     "prettier": "npx prettier ./ --write",

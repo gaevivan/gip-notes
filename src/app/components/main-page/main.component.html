@@ -5,9 +5,8 @@
             <span class="text-secondary my-auto cursor-default">{{authService.currentUser.login}}</span>
         </div>
     </div>
-    <div class="h-100 w-100 overflow-auto">
-        <div class="d-inline-flex flex-wrap flex-gap justify-content-start p-2"
-            [style.maxWidth.px]="1200">
+    <div class="h-100 w-100 d-flex overflow-auto">
+        <div class="w-100 d-inline-flex flex-wrap flex-gap justify-content-start align-items-start p-2">
             <ng-container *ngFor="let item of storageService.notes">
                 <div (focusin)="setActive(item)" (focusout)="setActive(null)"
                     class="border rounded d-flex flex-column justify-content-between {{item.color}}-color"
