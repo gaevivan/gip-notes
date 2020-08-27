@@ -29,7 +29,8 @@ export class MainComponent {
 
     public ngOnInit(): void {
         // this.replaceByNew();
-        this.getItems();
+        // this.getItems();
+        this.storageService.refresh();
     }
 
     public setActive(item: Entities.Note): void {
