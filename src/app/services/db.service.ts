@@ -13,7 +13,7 @@ export class DbService {
     public readAll<T = IDataItem>(entity: Entity, userLogin?: string): Observable<T[]> {
         this.loaderService.setActive(true);
         const listRef: AngularFireList<T> = this.database.list<T>(`${entity}`, ref =>
-            ref.orderByChild("u_date")
+            userLogin ? ref.orderByChild("user").equalTo(userLogin) : ref
         );
         return listRef.valueChanges().pipe(
             take(1),

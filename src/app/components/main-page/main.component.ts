@@ -33,14 +33,18 @@ export class MainComponent {
         this.storageService.refresh();
     }
 
+    public ngOnDestroy(): void {
+        this.storageService.notes = [];
+    }
+
     public setActive(item: Entities.Note): void {
         this.activeItem = item;
     }
 
     public replaceByNew(): void {
-        const newItems: Entities.Note[] = getRandomNotes();
+        const newItems: Entities.Note[] = getRandomNotes(this.authService.currentUser.login);
         this.db
-            .deleteAll(Entity.note)
+            .readAll(Entity.note)
             .pipe(
                 switchMapTo(forkJoin(newItems.map(v => this.db.createItem(Entity.note, v)))),
                 switchMapTo(this.db.readAll(Entity.note, this.authService.currentUser.login)),
@@ -55,14 +59,12 @@ export class MainComponent {
             .subscribe();
     }
 
-    public getItems(): void {
-        this.db
-            .readAll(Entity.note, this.authService.currentUser.login)
-            .subscribe(v => (this.items = v));
-    }
-
     public update(item: Entities.Note): void {
         this.db.updateItem(Entity.note, item).subscribe();
+    }
+
+    public delete(item: Entities.Note): void {
+        this.db.deleteItem(Entity.note, item["uuid"]).pipe(tap(() => this.storageService.refresh())).subscribe();
     }
 
     public create(): void {
@@ -71,19 +73,20 @@ export class MainComponent {
             title: this.newItem.title,
             u_date: moment().format("YYYY.MM.DDThh:mm:ss"),
             c_date: moment().format("YYYY.MM.DDThh:mm:ss"),
-            color: null
+            color: null,
+            user: this.authService.currentUser.login
         };
         this.db
             .createItem(Entity.note, newItem)
             .pipe(
                 finalize(() => (this.newItem = getEmptyNote())),
-                finalize(() => this.getItems())
+                finalize(() => this.storageService.refresh())
             )
             .subscribe();
     }
 }
 
-function getRandomNotes(): Entities.Note[] {
+function getRandomNotes(user: string): Entities.Note[] {
     return new Array(10).fill(null).map((v, i) => ({
         title: `Заголовок ${i}`,
         text: `Текст ${i}`,
@@ -93,7 +96,8 @@ function getRandomNotes(): Entities.Note[] {
         c_date: moment(`2020.08.26T11:28:${10 + i}`, "YYYY.MM.DDThh:mm:ss").format(
             "YYYY.MM.DDThh:mm:ss"
         ),
-        color: null
+        color: null,
+        user
     }));
 }
 
@@ -103,6 +107,7 @@ function getEmptyNote(): Entities.Note {
         title: "",
         u_date: "",
         c_date: "",
-        color: null
+        color: null,
+        user: null
     };
 }

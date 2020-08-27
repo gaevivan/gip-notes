@@ -11,6 +11,7 @@ export namespace Entities {
         u_date: string;
         c_date: string;
         color: string;
+        user: string;
     }
 }
 

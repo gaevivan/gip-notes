@@ -13,7 +13,7 @@ interface ILoginData {
 @Injectable()
 export class AuthService implements CanActivate {
     public loginData: ILoginData = {};
-    public currentUser: any = null;
+    public currentUser: Entities.User = null;
 
     constructor(private dbService: DbService, private router: Router) {}
 

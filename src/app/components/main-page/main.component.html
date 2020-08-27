@@ -17,8 +17,13 @@
                     </ng-container>
                     <textarea type="text" class="flex-grow-1 border-0 align-top bg-transparent p-2"
                         [(ngModel)]="item.text" (change)="update(item)"></textarea>
-                    <div class="text-secondary d-flex justify-content-end align-content-end cursor-default p-2">
-                        {{item.u_date | momentDate}}</div>
+                    <div class="d-flex justify-content-between w-100 p-2">
+                        <button class="color-garnet p-1" (click)="delete(item)">
+                            <span class="gip-icon-trash color-garnet"></span>
+                        </button>
+                        <div class="text-secondary d-flex justify-content-end align-content-end cursor-default my-auto">
+                            {{item.u_date | momentDate}}</div>
+                    </div>
                 </div>
             </ng-container>
             <div class="border rounded d-flex flex-column justify-content-between bg-transparent"

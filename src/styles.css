@@ -30,6 +30,7 @@
 
 textarea {
     resize: none !important;
+    outline: none !important;
 }
 
 .font-16 {
