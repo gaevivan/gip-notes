@@ -23,49 +23,20 @@
     z-index: 3;
 }
 
-.color-light {
-    color: #c0c0c0;
-}
-
 .bg-shadow {
-    animation: display ease-in 100ms;
-    background-color: rgba(0, 0, 0, 0.555);
-}
-@keyframes display {
-    from {
-        background-color: rgba(0, 0, 0, 0);
-    }
-}
-.bg-color {
-    background-color: #f2f2f2;
-}
-.bg-transparent {
-    background-color: transparent;
-    outline: none;
+    animation: display linear 1s;
+    background-color: rgba(0, 0, 0, 0.9);
 }
 
 textarea {
     resize: none !important;
 }
 
-.red-color {
-    background-color: #eba6a6;
+.font-16 {
+    font-size: 16px !important;
 }
-.violet-color {
-    background-color: #dbc5f0;
-}
-.yellow-color {
-    background-color: #f1ebd7;
-}
-.blue-color {
-    background-color: #cbe1ff;
-}
-.green-color {
-    background-color: #9bd3b9;
-}
-
-.form-control {
-    border: none !important;
+.font-32 {
+    font-size: 32px !important;
 }
 
 .loader {
@@ -151,4 +122,13 @@ textarea {
         box-shadow: 0em -3em 0 0, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em,
             -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em;
     }
+}
+
+html,
+body {
+    height: 100%;
+}
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
 }

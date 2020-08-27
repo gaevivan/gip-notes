@@ -15,6 +15,10 @@ import { LoaderComponent } from "./components/loader/loader.component";
 import { LoginComponent } from "./components/login-page/login.component";
 import { LoaderService } from "./services/loader.service";
 import { AuthService } from "./services/auth.service";
+import { SidebarComponent } from "./components/sidebar/sidebar.component";
+import { SidebarService } from "./services/sidebar.service";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { StorageService } from "./services/storage.service";
 
 @NgModule({
     declarations: [
@@ -23,7 +27,8 @@ import { AuthService } from "./services/auth.service";
         NotFoundComponent,
         MomentDatePipe,
         LoaderComponent,
-        LoginComponent
+        LoginComponent,
+        SidebarComponent
     ],
     imports: [
         BrowserModule,
@@ -31,9 +36,16 @@ import { AuthService } from "./services/auth.service";
         FormsModule,
         AppRoutingModule,
         AngularFireModule.initializeApp(FIREBASE_CONFIG),
-        AngularFirestoreModule
+        AngularFirestoreModule,
+        BrowserAnimationsModule
     ],
-    providers: [DbService, LoaderService, AuthService],
+    providers: [
+        DbService,
+        LoaderService,
+        AuthService,
+        SidebarService,
+        StorageService
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {}

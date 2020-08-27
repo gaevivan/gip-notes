@@ -1,0 +1,22 @@
+<div class="h-100 w-100 d-flex flex-column">
+    <span class="gip-icon-note mx-auto p-2 color-sapphire my-2"></span>
+    <hr class="border-secondary">
+    <button class="color-pearl mx-auto p-2 mt-1" (click)="storageService.refresh()">
+        <span class="gip-icon-refresh color-pearl"></span>
+    </button>
+    <button class="color-pearl mx-auto p-2 mt-1" [title]="storageService.isFullWidth ? 'Сетка' : 'Список'" (click)="storageService.toggleMode()">
+        <ng-container *ngIf="!storageService.isFullWidth; else fullWidth">
+            <span class="gip-icon-burger color-pearl"></span>
+        </ng-container>
+        <ng-template #fullWidth>
+            <span class="gip-icon-grid-4 color-pearl"></span>
+        </ng-template>
+    </button>
+    <button
+        class="color-pearl mx-auto p-2 mt-auto mb-1"
+        title="Выйти"
+        (click)="authService.signOut()"
+    >
+        <span class="gip-icon-shutdown color-pearl"></span>
+    </button>
+</div>

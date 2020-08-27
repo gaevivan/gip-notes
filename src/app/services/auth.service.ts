@@ -24,10 +24,18 @@ export class AuthService implements CanActivate {
             return this.currentUser ? true : this.router.navigate([Page.login]);
         } else {
             return this.currentUser ? this.router.navigate([Page.main]) : true;
-        } 
+        }
     }
 
     public trySignIn(): void {
+        if (
+            !this.loginData.login ||
+            !this.loginData.login.length ||
+            !this.loginData.password ||
+            !this.loginData.password.length
+        ) {
+            return alert("Заполните оба поля.");
+        }
         this.dbService
             .readAll<Entities.User>(Entity.user)
             .pipe(
@@ -44,6 +52,14 @@ export class AuthService implements CanActivate {
     }
 
     public trySignUp(): void {
+        if (
+            !this.loginData.login ||
+            !this.loginData.login.length ||
+            !this.loginData.password ||
+            !this.loginData.password.length
+        ) {
+            return alert("Заполните оба поля.");
+        }
         this.dbService
             .readAll<Entities.User>(Entity.user)
             .pipe(

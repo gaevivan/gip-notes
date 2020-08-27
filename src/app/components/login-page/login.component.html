@@ -1,15 +1,17 @@
-<div class="vh-100 vw-100 z-index-1 d-flex flex-column justify-content-center" [style.background]="'radial-gradient(#43C6AC, #191654)'">
-    <div
-        class="rounded mx-auto d-flex flex-column justify-content-start pt-4 px-4 pb-3"
-        [style.backgroundColor]="'rgba(255,255,255,.6)'"
-        [style.height.px]="300"
-        [style.width.px]="300"
-    >
-        <span class="text-center font-weight-bold">Логин</span>
-        <input class="mt-1 form-control" type="text" [(ngModel)]="authService.loginData.login" />
-        <span class="mt-2 text-center font-weight-bold">Пароль</span>
-        <input class="mt-1 form-control" type="text" [(ngModel)]="authService.loginData.password" />
-        <button class="mt-auto w-100 btn btn-primary" (click)="authService.trySignIn()">Войти</button>
-        <button class="mt-1 w-100 btn btn-link" (click)="authService.trySignUp()">Зарегистрироваться</button>
+<div class="vh-100 vw-100 z-index-1 d-flex flex-column justify-content-center"
+    [style.background]="'radial-gradient(#43C6AC, #424242)'">
+    <div class="mx-auto d-flex flex-column justify-content-start bg-white" [style.padding.rem]="3">
+        <div class="d-flex mx-auto">
+            <span class="gip-icon-note my-auto color-sapphire"></span>
+            <span class="ml-2 mb-0 h5 text-secondary">Заметки</span>
+        </div>
+        <input class="text-secondary mt-5" placeholder="Логин..." type="text"
+            [(ngModel)]="authService.loginData.login" />
+        <input class="mt-1 text-secondary" placeholder="Пароль..." type="password"
+            [(ngModel)]="authService.loginData.password" />
+        <button class="mt-1 color-cobalt w-100" (click)="authService.trySignIn()">Войти</button>
+        <button class="color-emerald w-100 mt-5" (click)="authService.trySignUp()">
+            Создать учётную запись
+        </button>
     </div>
 </div>

@@ -17,8 +17,8 @@ export class DbService {
         );
         return listRef.valueChanges().pipe(
             take(1),
-            tap(result => console.log("readAll", entity, result)),
-            finalize(() => this.loaderService.setActive(false))
+            tap(() => this.loaderService.setActive(false)),
+            tap(result => console.log("readAll", entity, result))
         );
     }
 
@@ -28,9 +28,9 @@ export class DbService {
         const data$: Observable<T[]> = listRef.valueChanges();
         return data$.pipe(
             take(1),
+            tap(() => this.loaderService.setActive(false)),
             tap(() => listRef.remove()),
-            tap(result => console.log("deleteAll", entity, result)),
-            finalize(() => this.loaderService.setActive(false))
+            tap(result => console.log("deleteAll", entity, result))
         );
     }
 
@@ -40,9 +40,9 @@ export class DbService {
         const dataItemRef: AngularFireObject<T> = this.database.object<T>(`${entity}/${uuid}`);
         data.uuid = uuid;
         return defer(() => dataItemRef.set(data)).pipe(
+            tap(() => this.loaderService.setActive(false)),
             map(() => data),
-            tap(result => console.log("createItem", entity, uuid, result)),
-            finalize(() => this.loaderService.setActive(false))
+            tap(result => console.log("createItem", entity, uuid, result))
         );
     }
 
@@ -51,8 +51,8 @@ export class DbService {
         const dataItemRef: AngularFireObject<T> = this.database.object<T>(`${entity}/${uuid}`);
         return dataItemRef.valueChanges().pipe(
             take(1),
-            tap(result => console.log("readItem", entity, uuid, result)),
-            finalize(() => this.loaderService.setActive(false))
+            tap(() => this.loaderService.setActive(false)),
+            tap(result => console.log("readItem", entity, uuid, result))
         );
     }
 

@@ -24,6 +24,7 @@
     "bootstrap": "^4.5.2",
     "firebase": "^7.13.1",
     "firebase-tools": "^8.9.0",
+    "gip-styles": "^0.1.0",
     "moment": "^2.27.0",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",

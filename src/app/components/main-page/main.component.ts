@@ -1,12 +1,13 @@
-import { Component } from "@angular/core";
+import { Component, HostBinding } from "@angular/core";
 import { DbService } from "../../services/db.service";
 import { Entity, Entities } from "../../models/types";
 import * as moment from "moment";
-import { COLORS } from "../../models/colors";
 import { LoaderService } from "src/app/services/loader.service";
 import { finalize, switchMapTo, tap, switchMap } from "rxjs/operators";
 import { forkJoin } from "rxjs";
 import { AuthService } from "src/app/services/auth.service";
+import { SidebarService } from "src/app/services/sidebar.service";
+import { StorageService } from "src/app/services/storage.service";
 
 @Component({
     selector: "main-page",
@@ -17,10 +18,13 @@ export class MainComponent {
     public newItem: Entities.Note = getEmptyNote();
     public items: any[];
     public isFullWidth: boolean = false;
+
     constructor(
         public db: DbService,
         public loaderService: LoaderService,
-        public authService: AuthService
+        public authService: AuthService,
+        public sidebarService: SidebarService,
+        public storageService: StorageService
     ) {}
 
     public ngOnInit(): void {
@@ -51,7 +55,9 @@ export class MainComponent {
     }
 
     public getItems(): void {
-        this.db.readAll(Entity.note, this.authService.currentUser.login).subscribe(v => (this.items = v));
+        this.db
+            .readAll(Entity.note, this.authService.currentUser.login)
+            .subscribe(v => (this.items = v));
     }
 
     public update(item: Entities.Note): void {
@@ -64,7 +70,7 @@ export class MainComponent {
             title: this.newItem.title,
             u_date: moment().format("YYYY.MM.DDThh:mm:ss"),
             c_date: moment().format("YYYY.MM.DDThh:mm:ss"),
-            color: COLORS[Math.floor(Math.random() * Math.floor(4))]
+            color: null
         };
         this.db
             .createItem(Entity.note, newItem)
@@ -86,7 +92,7 @@ function getRandomNotes(): Entities.Note[] {
         c_date: moment(`2020.08.26T11:28:${10 + i}`, "YYYY.MM.DDThh:mm:ss").format(
             "YYYY.MM.DDThh:mm:ss"
         ),
-        color: COLORS[Math.floor(Math.random() * Math.floor(4))]
+        color: null
     }));
 }
 
