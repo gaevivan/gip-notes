@@ -5,7 +5,13 @@
         "outDir": "./out-tsc/app",
         "types": [
             "firebase"
-        ]
+        ],
+        "paths": {
+            "@components/*": ["src/app/components/*"],
+            "@models/*": ["src/app/models/*"],
+            "@pipes/*": ["src/app/pipes/*"],
+            "@services/*": ["src/app/services/*"]
+        }
     },
     "files": [
         "src/main.ts",

@@ -1,0 +1,16 @@
+<div class="d-flex w-100 p-1 border-bottom">
+    <input type="text" class="w-100 color-black" placeholder="Поиск...">
+    <button class="my-auto ml-1 color-black">
+        <div class="gip-icon-add color-black"></div>
+    </button>
+</div>
+<!-- scrollable-content -->
+<div class="w-100 h-100 d-flex overflow-auto">
+    <div class="w-100 d-inline-flex flex-wrap justify-content-start align-items-start"
+    [ngClass]="{'flex-gap p-1': !(storageService.isFullWidth$ | async)}">
+        <ng-container *ngFor="let item of storageService.notes$ | async; let first = first; let last = last">
+            <note-item [item]="item" class="p-1"
+            [ngClass]="{'border': !(storageService.isFullWidth$ | async), 'w-100': (storageService.isFullWidth$ | async), 'border-bottom': (storageService.isFullWidth$ | async) && !last}"></note-item>
+        </ng-container>
+    </div>
+</div>

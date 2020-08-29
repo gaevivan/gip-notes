@@ -15,10 +15,12 @@ import { LoaderComponent } from "./components/loader/loader.component";
 import { LoginComponent } from "./components/login-page/login.component";
 import { LoaderService } from "./services/loader.service";
 import { AuthService } from "./services/auth.service";
-import { SidebarComponent } from "./components/sidebar/sidebar.component";
-import { SidebarService } from "./services/sidebar.service";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { StorageService } from "./services/storage.service";
+import { NoteComponent } from './components/note/note.component';
+import { NoteListComponent } from './components/note-list/note-list.component';
+import { LeftbarComponent } from './components/leftbar/leftbar.component';
+import { TopbarComponent } from './components/topbar/topbar.component';
 
 @NgModule({
     declarations: [
@@ -28,7 +30,10 @@ import { StorageService } from "./services/storage.service";
         MomentDatePipe,
         LoaderComponent,
         LoginComponent,
-        SidebarComponent
+        LeftbarComponent,
+        NoteComponent,
+        NoteListComponent,
+        TopbarComponent
     ],
     imports: [
         BrowserModule,
@@ -43,7 +48,6 @@ import { StorageService } from "./services/storage.service";
         DbService,
         LoaderService,
         AuthService,
-        SidebarService,
         StorageService
     ],
     bootstrap: [AppComponent]

@@ -1,13 +1,12 @@
-import { Component, HostBinding } from "@angular/core";
-import { DbService } from "../../services/db.service";
-import { Entity, Entities } from "../../models/types";
+import { Component } from "@angular/core";
 import * as moment from "moment";
-import { LoaderService } from "src/app/services/loader.service";
 import { finalize, switchMapTo, tap, switchMap } from "rxjs/operators";
 import { forkJoin } from "rxjs";
-import { AuthService } from "src/app/services/auth.service";
-import { SidebarService } from "src/app/services/sidebar.service";
-import { StorageService } from "src/app/services/storage.service";
+import { LoaderService } from "@services/loader.service";
+import { AuthService } from "@services/auth.service";
+import { StorageService } from "@services/storage.service";
+import { DbService } from "@services/db.service";
+import { Entity, Entities } from "@models/types";
 
 @Component({
     selector: "main-page",
@@ -23,7 +22,6 @@ export class MainComponent {
         public db: DbService,
         public loaderService: LoaderService,
         public authService: AuthService,
-        public sidebarService: SidebarService,
         public storageService: StorageService
     ) {}
 
@@ -34,7 +32,7 @@ export class MainComponent {
     }
 
     public ngOnDestroy(): void {
-        this.storageService.notes = [];
+        this.storageService.notes$.next([]);
     }
 
     public setActive(item: Entities.Note): void {

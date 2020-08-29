@@ -1,0 +1,5 @@
+<div class="d-flex p-2 position-fixed w-100 justify-content-end bg-light" [style.top]="0"
+    [style.paddingLeft]="storageService.leftBarWidth$ | async" [style.height]="storageService.topBarHeight$ | async">
+    <span class="gip-icon-user m-1 ml-auto color-gray"></span>
+    <span class="text-secondary my-auto cursor-default">{{authService.currentUser.login}}</span>
+</div>

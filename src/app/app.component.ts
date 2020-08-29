@@ -3,8 +3,7 @@ import { AuthService } from "./services/auth.service";
 
 @Component({
     selector: "app-root",
-    template: `<router-outlet></router-outlet><loader></loader
-        ><sidebar *ngIf="authService.currentUser"></sidebar>`,
+    template: `<router-outlet></router-outlet>`,
     styles: []
 })
 export class AppComponent {
